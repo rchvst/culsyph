@@ -1,6 +1,8 @@
 # culsyph
 gotta get your culture syphoned, guy
 
+this suite of scripts will efficiently rape the hell out of any supplied imageboard @ 4C, and build a similar folder structure to the live data so you can continue to rape culture in the future and resume existing threads.  deleted files will be re-downloaded the next time it finds them.
+
 instructions
 
 1: you need to modify the $StorageRoot variable (download path) to cs_syphon.ps1 as $StorageRoot ($StorageRoot = 'Y:\Mecha\mpl_trimmed')
