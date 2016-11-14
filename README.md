@@ -7,7 +7,7 @@ instructions
 
 2: you need to modify the $BitsFilter variable in cs_diskwrite.ps1 and cs_bitsqueue.ps1 to match the root of the path you just set in step 1 ($BitsFilter = 'Y:\')
 
-3: run launch.cmd > opens 3 instances of powershell, one for each role - they'll stay open when you control+c to break out of them
+3: run launch.cmd > opens 3 instances of powershell, one for each role - the cmd.exe windows stay open when you control+c to break out of the running script when you're done
 
 4: that is all I think.  provide feedback and I'll get to it.
 
