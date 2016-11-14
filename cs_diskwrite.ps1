@@ -72,5 +72,5 @@ catch {
 }
 
 finally {
-     write-host "It's Over.  Grats on another $RunningTotal files saved this run."
+write-host "It's Over.  Grats on another $RunningTotal files saved this run."
 }
