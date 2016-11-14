@@ -12,7 +12,7 @@
 # set the following to the drive letter of your download folder with trailing backslash
 $bitsfilter = 'Y:\' # *** Requires trailing backslash - is used to lazily filter for only my bits jobs
 # for example my $StorageRoot is 'Y:\mecha\mpl_trimmed' in cs_syphon so I used 'y:\' for $bitsfilter
-
+."c:\temp\ydrive.ps1"
 
 # should not need to change but hack away
 [int64]$RunningTotal = 0
