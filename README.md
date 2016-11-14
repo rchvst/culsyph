@@ -3,7 +3,9 @@ gotta get your culture syphoned, guy
 
 this suite of scripts will efficiently rape the hell out of any supplied imageboard @ 4C, and build a similar folder structure to the live data so you can continue to rape culture in the future and resume existing threads.  deleted files will be re-downloaded the next time it finds them.  or point it to your favourite board and leave it running 24/7 and be the first kid on your block to have 0 minute dick pics if that's your thing (and you know it's your thing).
 
-instructions
+forgive the spaghetti code in places as this was written spanning my various levels of powershell knowledge. it taught me a lot!
+
+INSTRUCTIONS:
 
 1: you need to modify the $StorageRoot variable (download path) to cs_syphon.ps1 as $StorageRoot ($StorageRoot = 'Y:\Mecha\mpl_trimmed')
 
