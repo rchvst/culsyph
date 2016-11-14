@@ -79,9 +79,7 @@ Function ThreadDestroyer {
     catch [exception] {
         #write-host $($_.ToString()) -ForegroundColor darkMagenta -BackgroundColor white
         $_.FullyQualifiedErrorId
-        write-host "Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description '' -DisplayName '$FinalFile' -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null" -ForegroundColor Cyan
-        sleep -Seconds 3
-        $_
+        # sleep -Seconds 1
         if ($_.FullyQualifiedErrorId -eq "ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ForEachObjectCommand") { #"DriveNotFound,Microsoft.PowerShell.Commands.JoinPathCommand") {
             "No access to save path - if it's a network drives, and you're running as admin, can process can see it? (admin vs. user) - this app works as regular user"
             Break
