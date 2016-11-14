@@ -18,7 +18,7 @@
 # !!! YOU NEED TO DO THIS:
 # SET THIS TO WHERE YOU WANT THE FILES TO GO AND SET THE DRIVE AS $BitsFilter
 #   IN THE OTHER TWO FILES
-."c:\temp\ydrive.ps1"
+#."c:\temp\ydrive.ps1" #call a script to mount a drive
 $StorageRoot = 'Y:\mecha\mpl_trimmed' # no trailing backslash
 
 
