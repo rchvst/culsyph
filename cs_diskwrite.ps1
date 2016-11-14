@@ -59,7 +59,7 @@ try {
             #$BITS_DONE | Complete-BitsTransfer
    
         } else { # JOBSTATE -NE 'transferred'
-           write-host "[$(get-date)] Idle, so I'm sleeping, (0 completed transfers to save); Network Stats: Since Last reboot: $($now)kb // Since Last Iteration: +$($diff)kb"
+           write-host "[$(get-date)] Idle, so I'm sleeping ($TimeBetweenRounds`s), (0 completed transfers to save); Network Stats: Since Last reboot: $($now)kb // Since Last Iteration: +$($diff)kb"
            Start-Sleep -Seconds $TimeBetweenRounds
         }
         sleep -Milliseconds 50
