@@ -5,7 +5,7 @@ instructions
 
 1: you need to modify the $StorageRoot variable (download path) to cs_syphon.ps1 as $StorageRoot ($StorageRoot = 'Y:\Mecha\mpl_trimmed')
 
-2: you need to modify the $BitsFilter variable in cs_diskwrite.ps1 and cs_bitsqueue.ps1 to be the root of your DL path ($BitsFilter = 'Y:\')
+2: you need to modify the $BitsFilter variable in cs_diskwrite.ps1 and cs_bitsqueue.ps1 to match the root of the path you just set in step 1 ($BitsFilter = 'Y:\')
 
 3: run launch.cmd > opens 3 instances of powershell, one for each role - they'll stay open when you control+c to break out of them
 
