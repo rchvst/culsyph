@@ -18,7 +18,9 @@
 # !!! YOU NEED TO DO THIS:
 # SET THIS TO WHERE YOU WANT THE FILES TO GO AND SET THE DRIVE AS $BitsFilter
 #   IN THE OTHER TWO FILES
+."c:\temp\ydrive.ps1"
 $StorageRoot = 'Y:\mecha\mpl_trimmed' # no trailing backslash
+
 
 # should not need to change but hack away
 $FCB = 'http://boards.4chan.org/b/catalog'
@@ -61,11 +63,12 @@ Function ThreadDestroyer {
                 if ((Get-BitsTransfer -Name "$FinalFile" -ea 0 | Measure-Object).Count -eq '0') {
                     if ($CurrentSite -eq '4C') {
                         if (($NowPic -like "i*") -and ($Nowpic -notlike "*.css")) {
+                            #write-host $NowPic -ForegroundColor yellow
                             $totalQueued++
                             #"dest: $FinalFile"
                             #"src : $sourcepic"
                             #"description $_"
-                            Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description "$finalfile" -DisplayName "$FinalFile" -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null
+                            Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description "x $finalfile" -DisplayName "$FinalFile" -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null
                             # IF YOU WANNA SLOW THINGS DOWN HERE'S A GOOD SPOT - ADDS A DELAY BETWEEN PROCESSING FILES IN THE THREAD.. 
                             #Start-Sleep -Milliseconds 100
                         } 
@@ -79,7 +82,8 @@ Function ThreadDestroyer {
     catch [exception] {
         #write-host $($_.ToString()) -ForegroundColor darkMagenta -BackgroundColor white
         $_.FullyQualifiedErrorId
-        # sleep -Seconds 1
+        $_ | Select *
+        sleep -Seconds 5
         if ($_.FullyQualifiedErrorId -eq "ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ForEachObjectCommand") { #"DriveNotFound,Microsoft.PowerShell.Commands.JoinPathCommand") {
             "No access to save path - if it's a network drives, and you're running as admin, can process can see it? (admin vs. user) - this app works as regular user"
             Break
@@ -122,6 +126,7 @@ function BrandNewCat {
             $ThrNumba = $($_.groups[1].value)
             $cThreadURL  = "$($CThreadRoot)$($_.groups[1].value)"
             $cJustID = ($_.groups[1].value)
+            #write-host $cThreadURL -ForegroundColor Cyan
             ThreadDestroyer -ThreadURL $cThreadURL -JustID $cJustID -CurrentSite $Site 
         }
     }
@@ -133,9 +138,6 @@ function BrandNewCat {
 }
 try {
     do {
-        BrandNewCat -Site 4C -Board 'wsg' # uncommend this line to do worksafe gifs
-        BrandNewCat -Site 4C -Board 'gif' # uncomment this line to do gifs
-        BrandNewCat -Site 4C -Board 'hr' # uncomment this line to do high-res
         BrandNewCat -Site 4C -Board 'wg' # 4chan board name
         #
         # try your favourite board here
