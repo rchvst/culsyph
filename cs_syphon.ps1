@@ -6,6 +6,9 @@
 #    seeks out images in threads that don't already exist locally
 #    starts those downloads as suspended bitstransfers
 #
+#  TO CUSTOMIZE WHAT BOARDS YOU ARE APPROPRIATING VISIT LINE 131
+#    OTHERWISE IT WILL JUST DO /wg/
+#
 # legend for download scrolling:
 #   D - File exists locally, won't download
 #   Q - File exists in queue, but not locally
@@ -125,10 +128,13 @@ function BrandNewCat {
 }
 try {
     do {
-        BrandNewCat -Site 4C -Board 'wg'
-        #BrandNewCat -Site 4C -Board 'hr'
-        #BrandNewCat -Site 4C -Board 'wsg'
-        #BrandNewCat -Site 4C -Board 'gif'
+        BrandNewCat -Site 4C -Board 'wg' # 4chan board name
+        #BrandNewCat -Site 4C -Board 'hr' # uncomment this line to do high-res
+        #BrandNewCat -Site 4C -Board 'wsg' # uncommend this line to do worksafe gifs
+        #BrandNewCat -Site 4C -Board 'gif' # uncomment this line to do gifs
+        #
+        # try your favourite board here
+        #
         [console]::Beep(330,100)
         [console]::Beep(430,100)
         write-host "`r`nSleeping to be kind."
