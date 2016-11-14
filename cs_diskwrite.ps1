@@ -11,7 +11,7 @@
 #    recommended behavior is to just let it loop and adjust $TimeBetweenRounds to your delight
 #
 ##############################################################################
-
+."c:\temp\ydrive.ps1"
 # YOU NEED TO SET AT LEAST THE BITSFILTER TO YOUR DOWNLOAD PATH IN ALL THREE FILES
 # set the following to the drive letter of your download folder with trailing backslash
 $bitsfilter = 'Y:\' # *** Requires trailing backslash - is used to lazily filter for only my bits jobs
