@@ -45,6 +45,7 @@ Function ThreadDestroyer {
         $ThreadSource = $ThreadSource.ToString()
         $Results = ([regex]::matches($ThreadSource,$ThreadToFileRegEx))
         $Results | % {
+#            $deskr = $_
             $NowPic = $_.groups[1].value
             switch ($CurrentSite) {
                 '4c' {
@@ -61,7 +62,10 @@ Function ThreadDestroyer {
                     if ($CurrentSite -eq '4C') {
                         if (($NowPic -like "i*") -and ($Nowpic -notlike "*.css")) {
                             $totalQueued++
-                            Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description "$_" -DisplayName "$FinalFile" -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null
+                            #"dest: $FinalFile"
+                            #"src : $sourcepic"
+                            #"description $_"
+                            Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description "$finalfile" -DisplayName "$FinalFile" -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null
                             # IF YOU WANNA SLOW THINGS DOWN HERE'S A GOOD SPOT - ADDS A DELAY BETWEEN PROCESSING FILES IN THE THREAD.. 
                             #Start-Sleep -Milliseconds 100
                         } 
@@ -73,8 +77,11 @@ Function ThreadDestroyer {
         }
 }
     catch [exception] {
-        write-host $($_.ToString()) -ForegroundColor darkMagenta -BackgroundColor white
+        #write-host $($_.ToString()) -ForegroundColor darkMagenta -BackgroundColor white
         $_.FullyQualifiedErrorId
+        write-host "Start-BitsTransfer -Asynchronous -Destination $FinalFile -Source $SOurcePic  -Description '' -DisplayName '$FinalFile' -TransferPolicy Always -Priority foreground -RetryInterval 60 | Suspend-BitsTransfer | Out-Null" -ForegroundColor Cyan
+        sleep -Seconds 3
+        $_
         if ($_.FullyQualifiedErrorId -eq "ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ForEachObjectCommand") { #"DriveNotFound,Microsoft.PowerShell.Commands.JoinPathCommand") {
             "No access to save path - if it's a network drives, and you're running as admin, can process can see it? (admin vs. user) - this app works as regular user"
             Break
@@ -128,10 +135,10 @@ function BrandNewCat {
 }
 try {
     do {
+        BrandNewCat -Site 4C -Board 'wsg' # uncommend this line to do worksafe gifs
+        BrandNewCat -Site 4C -Board 'gif' # uncomment this line to do gifs
+        BrandNewCat -Site 4C -Board 'hr' # uncomment this line to do high-res
         BrandNewCat -Site 4C -Board 'wg' # 4chan board name
-        #BrandNewCat -Site 4C -Board 'hr' # uncomment this line to do high-res
-        #BrandNewCat -Site 4C -Board 'wsg' # uncommend this line to do worksafe gifs
-        #BrandNewCat -Site 4C -Board 'gif' # uncomment this line to do gifs
         #
         # try your favourite board here
         #
@@ -146,5 +153,6 @@ catch {
 
 }
 finally {
-    write-host "Added $totalQueued files to queue this instance." -ForegroundColor Yellow
+    write-host "" -ForegroundColor Yellow
+    $error
 }
