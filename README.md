@@ -11,6 +11,11 @@ INSTRUCTIONS:
 
 2: you need to modify the $BitsFilter variable in cs_diskwrite.ps1 and cs_bitsqueue.ps1 to match the root of the path you just set in step 1 ($BitsFilter = 'Y:\')
 
+2.5: Modify/add around line 140 of cs_syphon.ps1, as each board is exhausted each loop, then another iteration starts them all again (only downloading the added/new images since last leech loop)
+
+  BrandNewCat -Site 4C -Board 'wg' # board parameter = 4chan board name (b, wg, gif, ..)
+
+
 3: run launch.cmd > opens 3 instances of powershell, one for each role - the cmd.exe windows stay open when you control+c to break out of the running script when you're done
 
 4: that is all I think.  provide feedback and I'll get to it.
